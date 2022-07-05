@@ -1,0 +1,8 @@
+grpc:
+  client:
+    customer-service:
+      address: static://localhost:6565
+      negotiationType: plaintext
+    cart-service:
+      address: static://localhost:7575
+      negotiationType: plaintext

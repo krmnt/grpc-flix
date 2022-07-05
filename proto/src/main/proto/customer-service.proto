@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "common/common.proto";
+
+option java_multiple_files = true;
+option java_package = "com.kierangelo.grpcflix.customer";
+
+message CustomerSearchRequest{
+  int32 customerId = 1;
+}
+
+message CustomerResponse{
+  int32 customerId = 1;
+  string customerName = 2;
+  common.Category category = 3;
+
+}
+
+message CustomerCategoryUpdateRequest{
+  int32 customerId = 1;
+  common.Category category = 2;
+}
+
+service CustomerService{
+  rpc getCustomerCategory(CustomerSearchRequest) returns (CustomerResponse);
+  rpc updateCustomerCategory(CustomerCategoryUpdateRequest) returns (CustomerResponse);
+}

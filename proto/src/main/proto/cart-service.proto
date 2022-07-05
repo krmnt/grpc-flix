@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "common/common.proto";
+
+option java_multiple_files = true;
+option java_package = "com.kierangelo.grpcflix.cart";
+
+message CartDto{
+  int32 id = 1;
+  string productName = 2;
+  string customerName =3;
+  string category = 4;
+  int32 quantity = 5;
+}
+
+message CartSearchRequest{
+  common.Category category = 1;
+}
+
+message CartSearchResponse{
+  repeated CartDto cart = 1;
+}
+
+service CartService{
+  rpc getCarts(CartSearchRequest) returns (CartSearchResponse);
+}
